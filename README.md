@@ -1,69 +1,56 @@
-# Welcome to your Lovable project
+# 🚀 Hacker News Today
 
-## Project info
+Welcome to the coolest Hacker News reader on the planet! 🌎
 
-**URL**: https://lovable.dev/projects/e1456290-1d36-4656-ba65-25b3ce11d89e
+## ✨ Features
 
-## How can I edit this code?
+- 📰 Browse top Hacker News stories
+- 🔍 Search through stories with ease
+- 🌓 Dark/Light mode for your reading pleasure
+- ⚡ Lightning-fast performance
+- 🎨 Beautiful, modern UI with shadcn/ui
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+This awesome project is built with:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e1456290-1d36-4656-ba65-25b3ce11d89e) and start prompting.
+- ⚛️ React - For that smooth UI
+- 🎨 Tailwind CSS - Making things pretty
+- 🔄 React Query - Keeping data fresh
+- 🎭 shadcn/ui - Beautiful components
+- ⚡ Vite - For blazing fast development
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Getting Started
 
-**Use your preferred IDE**
+1. Clone this bad boy:
+```bash
+git clone <your-repo-url>
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. Install the goodies:
+```bash
+npm install
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Fire it up:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Visit `http://localhost:5173` and enjoy! 🎉
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🎨 Preview
 
-**Use GitHub Codespaces**
+Check out our sleek interface with both light and dark modes! Just click the theme toggle in the top right corner to switch between them.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🤝 Contributing
 
-## What technologies are used for this project?
+Found a bug? Want to add a cool feature? PRs are welcome! Let's make this project even more awesome together! 🚀
 
-This project is built with .
+## 📝 License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+MIT - Go wild! Build something cool! 🎉
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/e1456290-1d36-4656-ba65-25b3ce11d89e) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+Made with ❤️ and ☕
