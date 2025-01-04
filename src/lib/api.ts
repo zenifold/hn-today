@@ -20,3 +20,18 @@ export const fetchTopStories = async (query?: string): Promise<Story[]> => {
   const data = await response.json();
   return data.hits.slice(0, 100);
 };
+
+export const fetchGoogleNews = async (query?: string): Promise<Story[]> => {
+  const baseUrl = "https://hn.algolia.com/api/v1";
+  const endpoint = "/search";
+  const searchQuery = query || "site:news.google.com";
+  const url = `${baseUrl}${endpoint}?query=${encodeURIComponent(searchQuery)}`;
+  
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Failed to fetch Google News");
+  }
+  
+  const data = await response.json();
+  return data.hits.slice(0, 100);
+};

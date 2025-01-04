@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTopStories } from "@/lib/api";
+import { fetchGoogleNews } from "@/lib/api";
 import { StoryCard } from "@/components/StoryCard";
 import { StoryCardSkeleton } from "@/components/StoryCardSkeleton";
 import { Input } from "@/components/ui/input";
@@ -8,12 +8,12 @@ import { Search } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Navigation } from "@/components/Navigation";
 
-const Index = () => {
+const GoogleNews = () => {
   const [searchQuery, setSearchQuery] = useState("");
   
   const { data: stories, isLoading } = useQuery({
-    queryKey: ["stories", searchQuery],
-    queryFn: () => fetchTopStories(searchQuery),
+    queryKey: ["google-news", searchQuery],
+    queryFn: () => fetchGoogleNews(searchQuery),
     staleTime: 60000, // Cache for 1 minute
   });
 
@@ -26,7 +26,7 @@ const Index = () => {
         <Navigation />
         <div className="flex flex-col items-center mb-8">
           <h1 className="text-4xl font-mono font-bold text-primary mb-4">
-            Hacker News Today
+            Google News Today
           </h1>
           <div className="relative w-full max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -54,4 +54,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default GoogleNews;
