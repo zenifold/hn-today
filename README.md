@@ -24,7 +24,7 @@ This awesome project is built with:
 
 1. Clone this bad boy:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/zenifold/hn-today
 ```
 
 2. Install the goodies:
