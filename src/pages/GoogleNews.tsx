@@ -18,8 +18,8 @@ const GoogleNews = () => {
   const { data: stories, isLoading, error } = useQuery({
     queryKey: ["google-news", searchQuery],
     queryFn: () => fetchGoogleNews(searchQuery),
-    staleTime: 60000, // Cache for 1 minute
-    enabled: !!apiKey, // Only fetch if API key exists
+    staleTime: 60000,
+    enabled: !!apiKey,
   });
 
   const handleApiKeySubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -89,8 +89,15 @@ const GoogleNews = () => {
         </div>
 
         {error ? (
-          <div className="text-center text-red-500">
-            Error loading news. Please check your API key.
+          <div className="text-center space-y-4">
+            <div className="text-red-500">
+              {error instanceof Error ? error.message : "Error loading news. Please check your API key."}
+            </div>
+            {error instanceof Error && error.message.includes("localhost") && (
+              <div className="text-sm text-muted-foreground">
+                To use the NewsAPI Developer plan, please run this application locally using 'npm run dev' or 'yarn dev'.
+              </div>
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

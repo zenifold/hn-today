@@ -22,26 +22,37 @@ export const fetchTopStories = async (query?: string): Promise<Story[]> => {
 };
 
 export const fetchGoogleNews = async (query?: string): Promise<Story[]> => {
-  const API_KEY = 'YOUR_API_KEY'; // We should handle this securely
+  const apiKey = localStorage.getItem("newsApiKey");
   const baseUrl = 'https://newsapi.org/v2/top-headlines';
   const country = 'us';
   
-  const url = query
-    ? `${baseUrl}?q=${encodeURIComponent(query)}&apiKey=${API_KEY}&country=${country}`
-    : `${baseUrl}?apiKey=${API_KEY}&country=${country}`;
-    
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Failed to fetch Google News");
+  // Check if we're running on localhost
+  const isLocalhost = 
+    window.location.hostname === "localhost" || 
+    window.location.hostname === "127.0.0.1";
+
+  if (!isLocalhost) {
+    throw new Error(
+      "NewsAPI's Developer plan only allows requests from localhost. Please run the application locally or upgrade to a paid plan."
+    );
   }
   
+  const url = query
+    ? `${baseUrl}?q=${encodeURIComponent(query)}&apiKey=${apiKey}&country=${country}`
+    : `${baseUrl}?apiKey=${apiKey}&country=${country}`;
+    
+  const response = await fetch(url);
   const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || "Failed to fetch Google News");
+  }
   
   // Transform NewsAPI response to match our Story interface
   return data.articles.map((article: any, index: number) => ({
-    objectID: `gn-${index}`, // Generate a unique ID
+    objectID: `gn-${index}`,
     title: article.title,
-    points: 0, // NewsAPI doesn't have points
+    points: 0,
     url: article.url,
     author: article.author || 'Unknown',
     created_at: article.publishedAt
