@@ -6,7 +6,6 @@ import { StoryCardSkeleton } from "@/components/StoryCardSkeleton";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { Navigation } from "@/components/Navigation";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,7 +22,6 @@ const Index = () => {
         <ThemeToggle />
       </div>
       <div className="max-w-7xl mx-auto">
-        <Navigation />
         <div className="flex flex-col items-center mb-8">
           <h1 className="text-4xl font-mono font-bold text-primary mb-4">
             Hacker News Today
