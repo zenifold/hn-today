@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import GoogleNews from "./pages/GoogleNews";
+import LatestNews from "./pages/LatestNews";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +16,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/google-news" element={<GoogleNews />} />
+          <Route path="/latest-news" element={<LatestNews />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

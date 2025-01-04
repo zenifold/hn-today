@@ -16,13 +16,13 @@ export const Navigation = () => {
           Hacker News
         </Button>
       </Link>
-      <Link to="/google-news">
+      <Link to="/latest-news">
         <Button
-          variant={location.pathname === "/google-news" ? "default" : "ghost"}
+          variant={location.pathname === "/latest-news" ? "default" : "ghost"}
           className="gap-2"
         >
           <Newspaper className="h-4 w-4" />
-          Google News
+          Latest News
         </Button>
       </Link>
     </nav>

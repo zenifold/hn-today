@@ -21,40 +21,38 @@ export const fetchTopStories = async (query?: string): Promise<Story[]> => {
   return data.hits.slice(0, 100);
 };
 
-export const fetchGoogleNews = async (query?: string): Promise<Story[]> => {
-  const apiKey = localStorage.getItem("newsApiKey");
-  const baseUrl = 'https://newsapi.org/v2/top-headlines';
-  const country = 'us';
-  
-  // Check if we're running on localhost
-  const isLocalhost = 
-    window.location.hostname === "localhost" || 
-    window.location.hostname === "127.0.0.1";
-
-  if (!isLocalhost) {
-    throw new Error(
-      "NewsAPI's Developer plan only allows requests from localhost. Please run the application locally or upgrade to a paid plan."
-    );
+export const fetchLatestNews = async (query?: string): Promise<Story[]> => {
+  const apiKey = localStorage.getItem("mediastackApiKey");
+  if (!apiKey) {
+    throw new Error("Please provide a MediaStack API key");
   }
-  
-  const url = query
-    ? `${baseUrl}?q=${encodeURIComponent(query)}&apiKey=${apiKey}&country=${country}`
-    : `${baseUrl}?apiKey=${apiKey}&country=${country}`;
-    
+
+  const baseUrl = 'http://api.mediastack.com/v1/news';
+  const params = new URLSearchParams({
+    access_key: apiKey,
+    languages: 'en',
+    limit: '100',
+    sort: 'published_desc'
+  });
+
+  if (query) {
+    params.append('keywords', query);
+  }
+
+  const url = `${baseUrl}?${params.toString()}`;
   const response = await fetch(url);
   const data = await response.json();
-  
+
   if (!response.ok) {
-    throw new Error(data.message || "Failed to fetch Google News");
+    throw new Error(data.error?.info || "Failed to fetch news");
   }
-  
-  // Transform NewsAPI response to match our Story interface
-  return data.articles.map((article: any, index: number) => ({
-    objectID: `gn-${index}`,
+
+  return data.data.map((article: any, index: number) => ({
+    objectID: `ms-${index}`,
     title: article.title,
     points: 0,
     url: article.url,
-    author: article.author || 'Unknown',
-    created_at: article.publishedAt
+    author: article.source || 'Unknown',
+    created_at: article.published_at
   }));
 };
