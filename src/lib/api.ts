@@ -28,8 +28,8 @@ export const fetchGoogleNews = async (query?: string): Promise<Story[]> => {
     ? `${query} site:news.google.com`
     : 'site:news.google.com';
     
-  // Add sorting by date to get the most recent articles
-  const url = `${baseUrl}${endpoint}?query=${encodeURIComponent(searchQuery)}&sortBy=created_at_i&tags=story`;
+  // Use numericFilters to sort by date and tags for filtering stories
+  const url = `${baseUrl}${endpoint}?query=${encodeURIComponent(searchQuery)}&tags=story&numericFilters=created_at_i>0`;
   
   const response = await fetch(url);
   if (!response.ok) {
